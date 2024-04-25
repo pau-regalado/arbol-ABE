@@ -4,38 +4,27 @@
 #include <iostream>
 #include <queue>
 #include <utility>
-
 #include "NodoB.h"
 
-// tipo de dato para recorrido por niveles
-// template <typename Key>
-// typedef std::pair<int,NodoB<Key>*> lv_NodoB;
-
-// Clase que representa un arbol binario
 template <class Key>
-class AB{
+class AB {
 
   public:
     AB(void): raiz_(nullptr){}
     AB(NodoB<Key>* raiz): raiz_(raiz){}
     ~AB(){podar(raiz_);}
 
-    // Setters / getters 
     NodoB<Key>* getRaiz(void);
     void setRaiz(NodoB<Key>* nodo);
 
-    // Recorridos
     void inorden(NodoB<Key>* nodo) const;
     void recorridoNiveles(void);
 
-    //utiles
     void podar(NodoB<Key>* nodo);
     bool es_vacio(NodoB<Key>* nodo);
     bool es_hoja(NodoB<Key>* nodo);
     // void mostrar_arbol(void);
-    // void mostrarRama(NodoB<Key>* nodo);
-
-    // tamaños y alturas
+    // void mostrarRama(NodoB<Key>* nodo)
 
     const int tam(void);
     const int tamRama(NodoB<Key>* nodo);
@@ -128,19 +117,9 @@ void AB<Key>::recorridoNiveles(void){
 }
 
 template <class Key>
-const int AB<Key>::tam(void){
-  return tamRama(raiz_);
-}
-
-template <class Key>
 const int AB<Key>::tamRama(NodoB<Key>* nodo){
   if (nodo == nullptr){return 0;}
     return (1 + tamRama(nodo->getIzq()) + tamRama(nodo->getDer()));
-}
-
-template <class Key>
-const int AB<Key>::alt(void){
-  return altNodo(raiz_);
 }
 
 template <class Key>

@@ -3,83 +3,83 @@
 
 #include <iostream>
 
-template <class T>
+template <class Key>
 class NodoB{
   public:
     NodoB(void);
-    NodoB(T data, NodoB<T>* izq = nullptr, NodoB<T>* der = nullptr);
+    NodoB(Key data, NodoB<Key>* izq = nullptr, NodoB<Key>* der = nullptr);
     ~NodoB(void);
-    // getter / setters 
 
-    NodoB<T>* getIzq (void);
-    NodoB<T>* getDer (void);
-    T         getData(void);
 
-    void setIzq (NodoB<T>* izq);
-    void setDer (NodoB<T>* der);    
-    void setData(T data);
+    NodoB<Key>* getIzq (void);
+    NodoB<Key>* getDer (void);
+    Key         getData(void);
 
-    NodoB<T>& operator=(const NodoB<T> &p);
+    void setIzq (NodoB<Key>* izq);
+    void setDer (NodoB<Key>* der);    
+    void setData(Key data);
 
-  private:
-    T data_;
-    T clave_;
-    NodoB<T>* h_der_;
-    NodoB<T>* h_izq_;
+    NodoB<Key>& operator=(const NodoB<Key> &p);
+
+  protected:
+    Key data_;
+    Key clave_;
+    NodoB<Key>* h_der_;
+    NodoB<Key>* h_izq_;
 };
 
-template <class T>
-NodoB<T>::NodoB(void){
+template <class Key>
+NodoB<Key>::NodoB(void){
   h_izq_ = nullptr;
   h_der_ = nullptr;
 }
 
-template <class T>
-NodoB<T>::NodoB(T data, NodoB<T>* izq, NodoB<T>* der){
+template <class Key>
+NodoB<Key>::NodoB(Key data, NodoB<Key>* izq, NodoB<Key>* der){
   data_ = data;
   h_izq_ = izq;
   h_der_ = der;
 }
 
 // Destruye el nodo
-template <class T>
-NodoB<T>::~NodoB(void){
+template <class Key>
+NodoB<Key>::~NodoB(void){
   if (!h_izq_) {delete h_izq_;}
   if (!h_der_) {delete h_der_;}
 }
 
-template <class T>
-NodoB<T>* NodoB<T>::getIzq(void){
+template <class Key>
+NodoB<Key>* NodoB<Key>::getIzq(void){
   return h_izq_;
 }
 
-template <class T>
-NodoB<T>* NodoB<T>::getDer(void){
+template <class Key>
+NodoB<Key>* NodoB<Key>::getDer(void){
   return h_der_;
 }
 
-template <class T>
-T NodoB<T>::getData(void){
+template <class Key>
+Key NodoB<Key>::getData(void){
   return data_;
 }
 
-template <class T>
-void NodoB<T>::setIzq(NodoB<T>* izq){
+template <class Key>
+void NodoB<Key>::setIzq(NodoB<Key>* izq){
   h_izq_ = izq;
 }
 
-template <class T>
-void NodoB<T>::setDer(NodoB<T>* der){
+template <class Key>
+void NodoB<Key>::setDer(NodoB<Key>* der){
   h_der_ = der;
 }
 
-template <class T>
-void NodoB<T>::setData(T data){
+template <class Key>
+void NodoB<Key>::setData(Key data){
   data_ = data;
 }
 
-template <class T>
-NodoB<T>& NodoB<T>::operator=(const NodoB<T> &nodo) {
+template <class Key>
+NodoB<Key>& NodoB<Key>::operator=(const NodoB<Key> &nodo) {
   if (this != &nodo) {
     this->data_  = nodo.getData();
     this->h_der_ = nodo.getDer();

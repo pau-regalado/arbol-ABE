@@ -13,7 +13,7 @@ class ABE: public AB<Key>{
   public:
     ABE(void): AB<Key>(nullptr){}
     ABE(NodoB<Key>* raiz): AB<Key>(raiz){}
-    // ~ABE(){}
+    ~ABE() {}
 
     bool insertar(const Key dato);
     void insertarEquilibradoRama(const Key dato, NodoB<Key>* nodo);
@@ -26,10 +26,7 @@ class ABE: public AB<Key>{
     bool buscarRama(NodoB<Key>* nodo, const Key& X);
 };
 
-template <class Key>
-bool ABE<Key>::equilibrado(void){
-  return equilibrioRama(this->getRaiz());
-}
+
 
 template <class Key>
 bool ABE<Key>::equilibrioRama(NodoB<Key>* nodo){
@@ -46,6 +43,11 @@ bool ABE<Key>::equilibrioRama(NodoB<Key>* nodo){
       return equilibrioRama(nodo->getIzq()) && equilibrioRama(nodo->getDer());
     default: return false;
   }
+}
+
+template <class Key>
+bool ABE<Key>::equilibrado(void){
+  return equilibrioRama(this->getRaiz());
 }
 
 template <class Key>
@@ -119,12 +121,6 @@ bool ABE<Key>::buscarRama(NodoB<Key>* nodod, const Key& X) {
   }
   return encontrado;
 }
-/*
-template <class Key>
-bool ABE<Key>::buscarRama(NodoB<Key>* nodo, const Key& X) {
-  if (!nodo) {return false;}
-  if (nodo->getData() == X) {return true;}
-  return (buscarRama(nodo->getIzq(), X) || buscarRama(nodo->getDer(), X));
-}*/
+
 
 #endif

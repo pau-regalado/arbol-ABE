@@ -10,8 +10,8 @@ LIB     		:= lib
 LIBRARIES   :=
 
 EXECUTABLE  := run
-PARAMS    	:= -size 5 -ord incrDec 0.5 -init ramdom -trace y
-PARAMSOPEN  := -size 5 -ord incrDec 0.5 -init file data1.txt -trace y
+PARAMS    	:= -ab abb -init random
+PARAMSOPEN  := -ab abe -init random -init file data1.txt
 
 SOURCES := $(wildcard $(SRC)/*.cc)
 OBJS	:= $(patsubst $(SRC)/%.cc,$(BUILD)/%.o,$(SOURCES))
@@ -36,7 +36,7 @@ project:
 run:
 	clear
 	@echo "🚀 Executing..."
-	./$(BIN)/$(EXECUTABLE) 
+	./$(BIN)/$(EXECUTABLE) $(PARAMS)
 
 clean:
 	@echo "🧹 Clearing..."
