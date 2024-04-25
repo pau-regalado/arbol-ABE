@@ -19,7 +19,6 @@ class ABB: public AB<Key>{
     bool insertar(const Key dato);
     bool insertarRama(NodoB<Key>* nodo, const Key dato);
 
-    // Busquedas
     bool buscar(const Key& X);
     bool buscarRama(NodoB<Key>* nodo, const Key& clave);
 };
