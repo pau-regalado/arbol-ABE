@@ -65,11 +65,12 @@ void AB<Key>::setRaiz(NodoB<Key>* raiz){
 
 template <class Key>
 void AB<Key>::podar(NodoB<Key>* nodo){
-  if (nodo == nullptr){return;}
-  podar(nodo->getIzq());
-  podar(nodo->getDer());
-  delete nodo;
-  nodo = nullptr;
+  if (nodo != nullptr) {
+    podar(nodo->getIzq());
+    podar(nodo->getDer());
+    delete nodo;
+    nodo = nullptr;
+  }
 }
 
 template <class Key>
