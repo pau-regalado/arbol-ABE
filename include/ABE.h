@@ -83,6 +83,7 @@ void ABE<Key>::insertarEquilibradoRama(const Key dato, NodoB<Key>* nodo){
 
 template <class Key>
 bool ABE<Key>::buscar(const Key& X) {
+  int contador = 0;
   if (this->getRaiz()) {
     return buscarRama(this->getRaiz(), X);
   } else {
