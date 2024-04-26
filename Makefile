@@ -36,7 +36,7 @@ project:
 run:
 	clear
 	@echo "🚀 Executing..."
-	./$(BIN)/$(EXECUTABLE) $(PARAMS)
+	./$(BIN)/$(EXECUTABLE)
 
 clean:
 	@echo "🧹 Clearing..."

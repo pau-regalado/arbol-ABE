@@ -30,13 +30,17 @@ bool ABB<Key>::buscar(const Key& clave) {
 
 template <class Key>
 bool ABB<Key>::buscarRama(NodoB<Key>* nodo, const Key& clave) {
+  int contador = 0;
   if (nodo == NULL) 
     return false;
   if (clave == nodo->getData()) 
     return true;
   if (clave < nodo->getData() )
+  std::cout << "Contador: " << contador << std::endl;
     return buscarRama(nodo->getIzq(), clave);
+    contador++;
   return buscarRama(nodo->getDer(), clave);
+  
 }
 
 template <class Key>

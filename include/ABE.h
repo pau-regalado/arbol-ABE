@@ -96,6 +96,7 @@ bool ABE<Key>::buscarRama(NodoB<Key>* nodod, const Key& X) {
   NodoB<Key> *nodo;
   int nivel, Nivel_actual = 0;
   bool encontrado = false;
+  int contador = 0;
   Q.push(std::make_pair(this->getRaiz(), 0));
 
   //Recorremos la cola hasta que este vacia
@@ -111,16 +112,17 @@ bool ABE<Key>::buscarRama(NodoB<Key>* nodod, const Key& X) {
       Nivel_actual = nivel;
     }
     //Mostramos el valor del nodo
-    if (nodo != NULL) {
+    if (nodo != NULL) { 
+      contador++;
       if (nodo->getData() == X) {
         encontrado = true;
-      }
+      }     
       Q.push(std::make_pair(nodo->getIzq(),nivel + 1));
-      Q.push(std::make_pair(nodo->getDer(),nivel + 1));
-    }
+      Q.push(std::make_pair(nodo->getDer(),nivel + 1));     
+    }  
   }
+  std::cout << "Contador1: " << contador << std::endl;
   return encontrado;
 }
-
 
 #endif

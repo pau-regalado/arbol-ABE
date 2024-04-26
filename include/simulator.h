@@ -20,9 +20,6 @@ class Simulator {
     Simulator() {}
     void run(int argc, char* argv[]);
     void show_menu(void);
-    //void casesOp(void);
-    //void randomInitializing();
-    //void manualInitializing();
 }; 
 
 void Simulator::run(int argc, char* argv[]) { 
