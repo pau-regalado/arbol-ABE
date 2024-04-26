@@ -11,8 +11,8 @@ class NodoB{
     ~NodoB(void);
 
 
-    NodoB<Key>* getIzq (void);
-    NodoB<Key>* getDer (void);
+    NodoB<Key>*& getIzq (void);
+    NodoB<Key>*& getDer (void);
     Key         getData(void);
 
     void setIzq (NodoB<Key>* izq);
@@ -49,12 +49,12 @@ NodoB<Key>::~NodoB(void){
 }
 
 template <class Key>
-NodoB<Key>* NodoB<Key>::getIzq(void){
+NodoB<Key>*& NodoB<Key>::getIzq(void){
   return h_izq_;
 }
 
 template <class Key>
-NodoB<Key>* NodoB<Key>::getDer(void){
+NodoB<Key>*& NodoB<Key>::getDer(void){
   return h_der_;
 }
 

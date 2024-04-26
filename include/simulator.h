@@ -56,33 +56,54 @@ void Simulator::run(int argc, char* argv[]) {
     } 
   }
 
-  /*if (!filename.empty()) {   
-    switch (arbType) {
-      case arbTypes::AABE: {      
-        arb = new ABE<Key>();             
-        break;
-      };
-      case arbTypes::AAB: {
-        arb = new AB<Key>();         
-        break;
-      };
-      
-    default:
-        arb = new ABE<Key>();
-      break;
-    }
+  if (!filename.empty()) {   
+    std::ifstream file("data/" + filename);
+
+    if (!file.is_open()) {
+      throw std::runtime_error("Error al abrir el archivo.");
+    }       
+
+    int kLines = 0;
+    file >> kLines;
+    for (int i = 0; i < kLines; ++i) {
+      int line;
+      file >> line;
+      arb->insertar(Key(line));
+    } 
+
   } else if (initType == initTypes::MANUAL) {
-    manualInitializing();
+    int kLines = 0;
+    std::cout << "Introduzca numero de elementos a insertar> ";
+    std::cin >> kLines;
+    if (kLines < 0) {
+      throw std::runtime_error("Tamano incorrecto");
+    }  
+    for (int i = 0; i < kLines; ++i) {
+      int line;
+      std::cout << "Introduzca el elemento [" << i << "]> ";
+      std::cin >> line;
+      arb->insertar(Key(line));
+    } 
   } else if (initType == initTypes::RANDOM) {
-    randomInitializing();
+    int kLines = 5;
+    std::cout << "Introduzca numero de elementos a insertar> ";
+    std::cin >> kLines;
+    if (kLines < 0) {
+      throw std::runtime_error("Tamano incorrecto");
+    }
+
+    const int MAX_INT = 100;
+    const int MIN_INT = 0;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> dis(MIN_INT, MAX_INT);
+
+    for (int i = 0; i < kLines; ++i) {
+      arb->insertar(Key(dis(gen)));
+    }
   } else {
     throw std::exception();
-  }*/
-
-  //mostrar_v(*sequence);
-  //ord->Sort();
-  //ord->printSequence();
-
+  }
 
   char opcion;
   bool quit = false;
@@ -131,67 +152,5 @@ void Simulator::show_menu(void){
   
   std::cout << "Opción: ";
 }
-/*
-void Simulator::casesOp(void) {
-  char opcion;
-  bool quit = false;
-  while (!quit){
-    show_menu();
-    std::cin >> opcion;
-    switch(opcion){
-      case '1': {
-        int dato;
-        std::cin >> dato;
-        if (arb.insertar(dato)) {
-          std::cout << dato << " insertado!" << std::endl;
-        }else{
-          std::cout << dato << " ya esta!" << std::endl;
-        }
-        break;
-      }
-      case '2': {
-        int x;
-        std::cin >> x;
-        if(p.buscar(x)){
-          std::cout << x << " encontrado" << std::endl;
-        }else{
-          std::cout << x << " no encontrado" << std::endl;
-        }
-        break;
-      }
-      case '3':
-        std::cout << p << std::endl;
-        break;
-      case '0': 
-        quit = true;
-        break;
-      default: std::cout << "opcion no soportada" << std::endl;
-        break;
-    }    
-  }
-}*/
-/*
-void Simulator::randomInitializing() {
-  const int MAX_INT = 99999999;
-  const int MIN_INT = 0;
-  std::random_device rd;
-  std::mt19937 gen(rd());
-  std::uniform_int_distribution<int> dis(MIN_INT, MAX_INT);
-  for (int i = 0; i < 10; i++) {
-    arb.insertar(dis(gen)); // Para trabajar con nifs poner solo Key() para llamar a su constrructor aleatorio
-  }
-}
 
-void Simulator::manualInitializing() {
-  std::cout << "Elija numero a insertar: " << std::endl;
-  int tam;
-  std::cin >> tam;
-  int value;
-  for (int i = 0; i < tam; i++) {
-    std::cout << "Inserte " << i << " elemento> ";
-    std::cin >> value;
-    arb.insertar(value);
-  }
-}
-*/
 #endif

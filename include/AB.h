@@ -14,7 +14,7 @@ class AB {
     AB(NodoB<Key>* raiz): raiz_(raiz){}
     ~AB(){podar(raiz_);}
 
-    NodoB<Key>* getRaiz(void);
+    NodoB<Key>*& getRaiz(void);
     void setRaiz(NodoB<Key>* nodo);
 
     void inorden(NodoB<Key>* nodo) const;
@@ -43,7 +43,7 @@ class AB {
 };
 
 template <class Key>
-NodoB<Key>* AB<Key>::getRaiz(void){
+NodoB<Key>*& AB<Key>::getRaiz(void){
   return raiz_;
 }
 

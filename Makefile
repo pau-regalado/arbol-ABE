@@ -10,7 +10,7 @@ LIB     		:= lib
 LIBRARIES   :=
 
 EXECUTABLE  := run
-PARAMS    	:= -ab abb -init random
+PARAMS    	:= -ab abb -init file data1.txt
 PARAMSOPEN  := -ab abe -init random -init file data1.txt
 
 SOURCES := $(wildcard $(SRC)/*.cc)

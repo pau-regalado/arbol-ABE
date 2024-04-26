@@ -17,7 +17,7 @@ class ABB: public AB<Key>{
     ~ABB() {}
 
     bool insertar(const Key dato);
-    bool insertarRama(NodoB<Key>* nodo, const Key dato);
+    bool insertarRama(NodoB<Key>*& nodo, const Key dato);
 
     bool buscar(const Key& X);
     bool buscarRama(NodoB<Key>* nodo, const Key& clave);
@@ -45,7 +45,7 @@ bool ABB<Key>::insertar(const Key clave) {
 }
 
 template <class Key>
-bool ABB<Key>::insertarRama(NodoB<Key>* nodo, const Key clave) {
+bool ABB<Key>::insertarRama(NodoB<Key>*& nodo, const Key clave) {
   if (nodo == nullptr) {
     nodo = new NodoB<Key>(clave);
     return true;
